@@ -23,7 +23,7 @@ if(isset($_POST['submit']))
 					$mdp = md5 ($mdp);
 					
 
-							$bdd = new PDO ('mysql:host=localhost;dbname=projetwebtest','root','');
+							global $bdd;
 							
 							$req = $bdd->prepare('INSERT INTO user(Username, FirstName, LastName, Mail, Pass, adress, Phone, Country) VALUES (:Username, :FirstName, :LastName, :Mail, :Pass, :adress, :Phone, :Country)');
 							$req->execute(array(
