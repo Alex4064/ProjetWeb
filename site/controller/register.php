@@ -54,7 +54,7 @@ if(isset($_POST['submit']))
 <body>
 <h1>Registration</h1>
 
-	<form method="post" action="register.php">
+	<form method="post" action="#">
 		<p>Username</p>
 			<input type="text" name="username">
 		<p>First Name</p>
