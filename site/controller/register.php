@@ -3,7 +3,8 @@
 <?php
 if(isset($_POST['submit']))
 {	
-	$login = $_POST['firstName'];
+	$firstname = $_POST['firstName'];
+	$login = $_POST['username'];
 	$lastName = $_POST['lastName'];
 	$mail = $_POST['email'];
 	$adress = $_POST['adress'];
@@ -24,9 +25,10 @@ if(isset($_POST['submit']))
 
 							$bdd = new PDO ('mysql:host=localhost;dbname=projetwebtest','root','');
 							
-							$req = $bdd->prepare('INSERT INTO user(FirstName, LastName, Mail, Pass, adress, Phone, Country) VALUES (:FirstName, :LastName, :Mail, :Pass, :adress, :Phone, :Country)');
+							$req = $bdd->prepare('INSERT INTO user(Username, FirstName, LastName, Mail, Pass, adress, Phone, Country) VALUES (:Username, :FirstName, :LastName, :Mail, :Pass, :adress, :Phone, :Country)');
 							$req->execute(array(
-								'FirstName'=> $login,
+								'Username'=> $login,
+								'FirstName'=> $firstname,
 								'LastName'=> $lastName,
 								'Mail'=> $mail,
 								'Pass'=> $mdp,
@@ -53,6 +55,8 @@ if(isset($_POST['submit']))
 <h1>Registration</h1>
 
 	<form method="post" action="register.php">
+		<p>Username</p>
+			<input type="text" name="username">
 		<p>First Name</p>
 			<input type="text" name="firstName">
 		<p>Last Name</p>
