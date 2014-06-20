@@ -1,74 +1,95 @@
 <?php
 
+session_start();;;
+
+$error = FALSE;
+
+$connexionOK = FALSE;
+
 if(isset($_POST["login"])){
 
-   if($_POST["username"] == NULL OR $_POST["password"] == NULL){
+   $login = $_POST['login'];
+   $password = htmlspecialchars(trim($_POST['password']));
+
+   if($login == NULL OR $password == NULL){
       
       $error = TRUE;
       
-      $errorMSG = "Vous devez remplir tout les champs !";
-      
+      $errorMSG = "Vous devez remplir tout les champs !";    
    }
 
    else{
-      
-      $sql = "SELECT username FROM users WHERE username = '".$_POST["username"]."' ";
-      
-      $req = mysql_query($sql);
-    
-      if($sql){
 
-         $sql = "SELECT * FROM users WHERE username = '".$_POST["username"]."' ";
-      
-         $req = mysql_query($sql);
-   
-         if($sql){
+      global $bdd;
 
-            $donnees = mysql_fetch_assoc($req);
-                 
-            if($_POST["password"] == $donnees["password"]){
-            
-               $connexionOK = TRUE;
+   $password = md5($password);
+   $result = $bdd->prepare("SELECT Pass FROM user WHERE Pass = \"".$password."\" AND Username = \"".$login."\"");
+   $result->execute();
+
+   $result2 = $result->fetch();
+
+
+   if($result2 != false) {
+
+      $connexionOK = TRUE;
+
+         $_SESSION["login"] = $_POST["login"];
                
-               $connexionMSG = "Connexion au site réussie. Vous êtes désormais connecté !";
-               
-               $_SESSION["username"] = $_POST["username"];
-               
-               $_SESSION["password"] = $_POST["password"];
-            
-            }
-            
-            // Sinon on lui affiche un message d'erreur.
-            else{
-            
-               $error = TRUE;
-            
-               $errorMSG = "Nom de compte ou mot de passe incorrect !";
-            
-            }
-         
-         }
-         
-         // Sinon on lui affiche un message d'erreur.      
-         else{
-         
-            $error = TRUE;
-         
-            $errorMSG = "Nom de compte ou mot de passe incorrect !";
-         
-         }
-      
-      }
-      
-      // Sinon on lui affiche un message d'erreur.      
-      else{
-         
-         $error = TRUE;
-         
-         $errorMSG = "Nom de compte ou mot de passe incorrect !";
-         
-      }
-   
-   }  
+         $_SESSION["password"] = $_POST["password"];
+
+         $connexionMSG = "Connexion au site réussie. Vous êtes désormais connecté !";
+   }
+
+   else {
+
+      $error = TRUE;
+
+      $errorMSG = "Nom de compte ou mot de passe incorrect !";
+   }
+}
+
 }
 ?>
+
+<?php if(isset($_SESSION["login"]) AND isset($_SESSION["password"])){
+   
+   echo "<p style=color:green>Bienvenue <strong>".$_SESSION["login"]."</strong></p>";
+  
+} ?>
+
+<?php if($error == TRUE){ echo "<p align=center style=color:red><strong>".$errorMSG."</strong></p>"; } ?>
+
+<?php if($connexionOK == TRUE){ echo "<p align=center style=color:green><strong>".$connexionMSG."</strong></p>"; } ?>
+
+
+
+
+<body>
+      
+      <h2>Connexion au site</h2>
+   
+      <form action="#" method="post">
+         
+         <table>
+            
+            <tr>
+               
+               <td><label for="login"><strong>Nom de compte</strong></label></td>
+               <td><input type="text" name="login" id="login"/></td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td><label for="password"><strong>Mot de passe</strong></label></td>
+               <td><input type="password" name="password" id="password"/></td>
+               
+            </tr>
+            
+         </table>
+         
+         <input type="submit" name="connexion" value="Se connecter"/>
+      
+      </form>
+
+      </body>
