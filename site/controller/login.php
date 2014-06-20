@@ -1,6 +1,6 @@
 <?php
 
-session_start();;;
+session_start();
 
 $error = FALSE;
 
@@ -14,7 +14,6 @@ if(isset($_POST["login"])){
    if($login == NULL OR $password == NULL){
       
       $error = TRUE;
-      
       $errorMSG = "Vous devez remplir tout les champs !";    
    }
 
