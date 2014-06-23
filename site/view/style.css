@@ -1,3 +1,11 @@
 * {
 	/*outline: 1px solid red;*/
 }
+
+.addToBasket {
+	float: right;
+}
+
+.middle {
+	padding: 2%;
+}
