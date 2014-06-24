@@ -3,47 +3,35 @@
 <?php
 if(isset($_POST['submit']))
 {	
-	$firstname = $_POST['firstName'];
-	$login = $_POST['username'];
-	$lastName = $_POST['lastName'];
-	$mail = $_POST['email'];
-	$adress = $_POST['adress'];
-	$phone = $_POST['phone'];
+	$firstname = $_POST['FIRSTNAME'];
+	$lastName = $_POST['LASTNAME'];
+	$email = $_POST['EMAIL'];
+	$adress = $_POST['ADRESS'];
+	$phone = $_POST['PHONE'];
+	$birthday = $_POST['Birthday'];
 	$country = $_POST['country'];
 	$mdp = htmlspecialchars(trim($_POST['mdp']));
 	$repeatpassword = htmlspecialchars(trim($_POST['repeatpassword']));
-	
 	if ($login&&$mdp&&$repeatpassword)
 	{
 			if(strlen($mdp)>=6)
 			{
 				if($mdp==$repeatpassword)
 				{
-				
 					$mdp = md5 ($mdp);
-					
-
 							global $bdd;
-							
-							$req = $bdd->prepare('INSERT INTO user(Username, FirstName, LastName, Mail, Pass, adress, Phone, Country) VALUES (:Username, :FirstName, :LastName, :Mail, :Pass, :adress, :Phone, :Country)');
+							$req = $bdd->prepare('INSERT INTO user(FirstName, LastName, Email, PassUser, Adress, Phone, Birthday) VALUES (:FirstName, :LastName, :Email, :PassUser, :Adress, :Phone, :Birthday)');
 							$req->execute(array(
-								'Username'=> $login,
 								'FirstName'=> $firstname,
 								'LastName'=> $lastName,
-								'Mail'=> $mail,
-								'Pass'=> $mdp,
-								'adress'=> $adress,
+								'Email'=> $email,
+								'PassUser'=> $mdp,
+								'Adress'=> $adress,
 								'Phone'=> $phone,
-								'Country'=> $country
+								'Birthday'=> $Birthday
 							));
-							
-							
-						
 				}else echo "Passwords are different";
-			
 			}else echo "Password is too short";
-				
-		
 	}else {echo "Kindly enter all fields";}
 }
 ?>
@@ -51,29 +39,31 @@ if(isset($_POST['submit']))
 <head>
 	<title>Registration</title>
 </head>
-<body>
-<h1>Registration</h1>
 
-	<form method="post" action="#">
-		<p>Username</p>
-			<input type="text" name="username">
-		<p>First Name</p>
-			<input type="text" name="firstName">
-		<p>Last Name</p>
-			<input type="text" name="lastName">
-		<p>E-mail</p>
-			<input type="email" name="email">
-		<p>Mot de passe</p>
-			<input type="password" name="mdp">
-		<p>Repeat your password</p>
-			<input type="password" name="repeatpassword">
-		<p>Adress</p>
-			<input type="text" name="adress">
-		<p>Phone</p>
-			<input type="tel" name="phone">
-		<p>Country</p>
-			<input type="text" name="country">
-			<br><br>
-			<input type="submit" name="submit" value="Register">
+<body>
+	<h1>Registration</h1>
+
+	<form action="#" method="post">
+		<p>First Name</p><input name="firstName" type="text">
+
+		<p>Last Name</p><input name="lastName" type="text">
+
+		<p>E-mail</p><input name="email" type="email">
+
+		<p>Mot de passe</p><input name="mdp" type="password">
+
+		<p>Repeat your password</p><input name="repeatpassword" type=
+		"password">
+
+		<p>Adress</p><input name="adress" type="text">
+
+		<p>Phone</p><input name="phone" type="tel">
+
+		<p>Country</p><input name="country" type="text">
+
+		<p>Birthday</p><input name="birthday" type="text"><br>
+		<br>
+		<input name="submit" type="submit" value="Register">
 	</form>
 </body>
+

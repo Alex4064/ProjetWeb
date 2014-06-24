@@ -4,15 +4,18 @@ if(isset($_POST["search"])){
 
 		global $bdd;
 		$keyword = $_POST['search'];
-		$result = $bdd->prepare("SELECT * FROM product WHERE name LIKE \"%".$keyword."%\"");
+		$result = $bdd->prepare("SELECT * FROM product WHERE NAMEPRODUCT LIKE \"%".$keyword."%\"");
 		$result->execute();
 
 
 		
 		while($row = $result->fetch()){
-			echo $row["name"];
-			$url = $row["price"];
-			echo " | <a href=\"$url\">$url</a>";
+			echo $row["NAMEPRODUCT"];
+			echo $row["DESCRIPTION"];
+			echo $row["PRICE"];
+
+			/*$url = $row["price"];
+			echo " | <a href=\"$url\">$url</a>";*/
 
 			echo "<br>";
 		}

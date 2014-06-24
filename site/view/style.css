@@ -2,10 +2,30 @@
 	/*outline: 1px solid red;*/
 }
 
-.addToBasket {
-	float: right;
+.col-md-2 {
+	float: left;
 }
 
-.middle {
-	padding: 2%;
+.product {
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
+.details {
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
+.content {
+	margin: 0px auto;
+	width: 90%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+    width: auto;
+
 }

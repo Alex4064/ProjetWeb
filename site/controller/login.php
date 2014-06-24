@@ -6,15 +6,15 @@ $error = FALSE;
 
 $connexionOK = FALSE;
 
-if(isset($_POST["login"])){
+if(isset($_POST["email"])){
 
-   $login = $_POST['login'];
+   $email = $_POST['email'];
    $password = htmlspecialchars(trim($_POST['password']));
 
-   if($login == NULL OR $password == NULL){
+   if($email == NULL OR $password == NULL){
       
       $error = TRUE;
-      $errorMSG = "Vous devez remplir tout les champs !";    
+      $errorMSG = "You should fill the fields!";
    }
 
    else{
@@ -22,7 +22,7 @@ if(isset($_POST["login"])){
       global $bdd;
 
    $password = md5($password);
-   $result = $bdd->prepare("SELECT Pass FROM user WHERE Pass = \"".$password."\" AND Username = \"".$login."\"");
+   $result = $bdd->prepare("SELECT PassUser FROM user WHERE PassUser = \"".$password."\" AND Email = \"".$email."\"");
    $result->execute();
 
    $result2 = $result->fetch();
@@ -32,27 +32,27 @@ if(isset($_POST["login"])){
 
       $connexionOK = TRUE;
 
-         $_SESSION["login"] = $_POST["login"];
+         $_SESSION["email"] = $_POST["email"];
                
          $_SESSION["password"] = $_POST["password"];
 
-         $connexionMSG = "Connexion au site réussie. Vous êtes désormais connecté !";
+         $connexionMSG = "Connection successful, you are now connected";
    }
 
    else {
 
       $error = TRUE;
 
-      $errorMSG = "Nom de compte ou mot de passe incorrect !";
+      $errorMSG = "Wrong email or password!";
    }
 }
 
 }
 ?>
 
-<?php if(isset($_SESSION["login"]) AND isset($_SESSION["password"])){
+<?php if(isset($_SESSION["email"]) AND isset($_SESSION["password"])){
    
-   echo "<p style=color:green>Bienvenue <strong>".$_SESSION["login"]."</strong></p>";
+   echo "<p style=color:green>Welcome <strong>".$_SESSION["email"]."</strong></p>";
   
 } ?>
 
@@ -73,14 +73,14 @@ if(isset($_POST["login"])){
             
             <tr>
                
-               <td><label for="login"><strong>Nom de compte</strong></label></td>
-               <td><input type="text" name="login" id="login"/></td>
+               <td><label for="email"><strong>Email</strong></label></td>
+               <td><input type="text" name="email" id="email"/></td>
                
             </tr>
             
             <tr>
                
-               <td><label for="password"><strong>Mot de passe</strong></label></td>
+               <td><label for="password"><strong>Password</strong></label></td>
                <td><input type="password" name="password" id="password"/></td>
                
             </tr>
