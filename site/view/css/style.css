@@ -1,0 +1,100 @@
+* {
+	/*outline: 1px solid red;*/
+}
+
+.col-md-2 {
+	float: left;
+}
+
+.product {
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
+.details {
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
+.content {
+	margin: 0px auto;
+	width: 90%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+    width: auto;
+
+}
+
+#exia 
+{
+    color: red;
+}
+
+.container
+{
+    width:100%;
+}
+
+
+
+div.menu 
+{
+    width:200px;
+	height:auto;
+    margin-left: 20px;
+    float: left;
+}
+
+div.topsell
+{
+width: 200px;
+height: auto;
+margin-right: 20px;
+float: right;
+}
+
+    
+.btn, .menu
+{
+    width:70px;
+    margin-left: -10px;
+    margin-top: 10px;
+}
+
+body
+{
+    background: url("grey_wash_wall.png") repeat;
+}
+
+.caroussel
+{
+	
+    margin-top: 30px;
+    margin-left: 25%;
+	margin-right:25%;
+}
+
+
+.footer
+{
+    margin-top: 100%;
+}
+
+#search
+
+{
+margin-right: -90%;
+float: right;
+}
+
+#basket
+{
+float: right;
+margin-right: -100%;
+}
+

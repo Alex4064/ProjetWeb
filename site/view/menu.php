@@ -1,9 +1,51 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-	<meta charset="utf-8">
-    <link href="style.css" rel="stylesheet">
+    <title>EXI@STORE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="bootstrap/css/style.css" rel="stylesheet" media="screen">
+	
 </head>
 <body>
-
+     
+    <div class="container">
+	<div class="menu" >
+			<ul id="menu" href="#" class="btn btn-inverse btn-large menu">INDEX</ul></br>
+			<ul id="menu" href="#" class="btn btn-inverse btn-large menu"><li class="icon-white icon-film"></li> DVD</ul></br>
+			
+			<!-- Split button -->
+			<div class="btn-group">
+			<button id="type" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+			<span class="sr-only">Genre</span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li><a href="#">Adventure</a></li>
+			<li><a href="#">Horror</a></li>
+			<li><a href="#">Funny</a></li>
+			<li><a href="#">Thriller</a></li>
+			<li><a href="#">Sad</a></li>
+			</ul>
+		</div></br>
+		<ul id="menu" href="#" class="btn btn-inverse btn-large menu"><li class="icon-white icon-music"></li> CD</ul></br>
+			<!-- Split button -->
+		<div class="btn-group">
+  
+			<button id="type2" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+			<span class="sr-only">Genre</span>
+			</button></br>
+			<ul class="dropdown-menu" role="menu">
+			<li><a href="#">Rap</a></li>
+			<li><a href="#">RNB</a></li>
+			<li><a href="#">Electro</a></li>
+			<li><a href="#">Rock</a></li>
+			<li><a href="#">Reggae</a></li>
+			</ul>
+		</div>
+		</div>
 </body>
-</html>
