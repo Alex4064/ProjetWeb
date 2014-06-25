@@ -1,5 +1,6 @@
 <?php
    session_start();
+   require './../model/login.php';
    $error = FALSE;
    $connexionOK = FALSE;
    
@@ -11,11 +12,8 @@
          $error = TRUE;
          $errorMSG = "You should fill the fields!";
       } else {
-         global $bdd;
          $password = md5($password);
-         $result = $bdd->prepare("SELECT PassUser FROM user WHERE PassUser = \"".$password."\" AND Email = \"".$email."\"");
-         $result->execute();
-         $result2 = $result->fetch();
+         new login($email, $password);
          
          if($result2 != false) {
             $connexionOK = TRUE;
@@ -31,16 +29,22 @@
 
    }
 
+   ?>
+<?php 
    
    if(isset($_SESSION["email"]) AND isset($_SESSION["password"])){
       echo "<p style=color:green>Welcome <strong>".$_SESSION["email"]."</strong></p>";
    }
 
+   ?>
+<?php 
    
    if($error == TRUE){
       echo "<p align=center style=color:red><strong>".$errorMSG."</strong></p>";
    }
 
+   ?>
+<?php 
    
    if($connexionOK == TRUE){
       echo "<p align=center style=color:green><strong>".$connexionMSG."</strong></p>";

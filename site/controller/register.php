@@ -24,9 +24,7 @@
 					
 					if($mdp==$repeatpassword){
 						$mdp = md5 ($mdp);
-						
 						new register($firstname, $lastname, $email, $mdp, $adress, $phone, $birthday);
-
 						$inscriptionOK = TRUE;
 						$inscriptionMSG = "Registration successful";
 					} else $error = TRUE;

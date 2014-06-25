@@ -23,20 +23,3 @@
 	}
 
 	?>
-
-      <form action="#" method="post">
-         <table>
-            <tr>
-               <td><label for="idProduct"><strong>ID objet</strong></label></td>
-               <td><input type="text" name="idProduct" id="idProduct"/></td>
-
-               <td><label for="quantity"><strong>Quantity</strong></label></td>
-               <td><input type="text" name="quantity" id="quantity"/></td>
-            </tr>  
-         </table>
-         <input type="submit" name="add"/>
-      </form>
-
-<?php
-var_dump($_SESSION['basket']);
-?> 
