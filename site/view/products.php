@@ -26,7 +26,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</a>
-					<a id="exia" class="brand" href="index.html">EXI@STORE</a>
+					<a id="exia" class="brand" href="index.php">EXI@STORE</a>
 						
 					<!-- Structure du menu -->
 						<div class="nav-collapse collapse">
@@ -52,8 +52,8 @@
 				</div>
 		</div>
         <div class="menusearch" >
-			<a href="index.html" id="menu" href="#" class="btn btn-inverse btn-large menu" >INDEX</a></br>
-			<a href="products.html" id="menu" href="#" class="btn btn-inverse btn-large menu"><li class="icon-white icon-film"></li> DVD</a></br>
+			<a href="index.php" id="menu" href="#" class="btn btn-inverse btn-large menu" >INDEX</a></br>
+			<a href="products.php" id="menu" href="#" class="btn btn-inverse btn-large menu"><li class="icon-white icon-film"></li> DVD</a></br>
 			
 			<!-- Split button -->
 			<div class="btn-group">
@@ -69,7 +69,7 @@
 			<li><a href="#">Sad</a></li>
 			</ul>
 		</div></br>
-		<a href="products.html" id="menu" href="#" class="btn btn-inverse btn-large menu "><li class="icon-white icon-music"></li> CD</a></br>
+		<a href="products.php" id="menu" href="#" class="btn btn-inverse btn-large menu "><li class="icon-white icon-music"></li> CD</a></br>
 			<!-- Split button -->
 		<div class="btn-group">
   
@@ -122,7 +122,7 @@
 
   <div class="col-sm-6 col-md-4 search">
     <div class="thumbnail">
-     <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+     <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="IMAGE MISSING">
       <div class="caption">
 	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
 	        <div class="quantity">Actually in stock: <?php echo $key["STOCK"]; ?></div> 
