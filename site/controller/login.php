@@ -1,8 +1,8 @@
 <?php
    session_start();
-   require './../model/login.php';
    $error = FALSE;
-   $connexionOK = FALSE;
+   $connectionOK = FALSE;
+   include("/../model/login.php");
    
    if(isset($_POST["connection"])){
       $email = $_POST['email'];
@@ -13,13 +13,13 @@
          $errorMSG = "You should fill the fields!";
       } else {
          $password = md5($password);
-         new login($email, $password);
+         $connection = new login($email, $password);
          
-         if($result2 != false) {
-            $connexionOK = TRUE;
+         if($_POST['connection'] == "ok") {
+            $connectionOK = TRUE;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["password"] = $_POST["password"];
-            $connexionMSG = "Connection successful!";
+            $connectionMSG = "Connection successful!";
          } else {
             $error = TRUE;
             $errorMSG = "Wrong email or password!";
@@ -28,26 +28,16 @@
       }
 
    }
-
-   ?>
-<?php 
-   
-   if(isset($_SESSION["email"]) AND isset($_SESSION["password"])){
-      echo "<p style=color:green>Welcome <strong>".$_SESSION["email"]."</strong></p>";
-   }
-
-   ?>
-<?php 
    
    if($error == TRUE){
       echo "<p align=center style=color:red><strong>".$errorMSG."</strong></p>";
+      header("Refresh: 3; url=/site/view/login.html");
    }
 
-   ?>
-<?php 
-   
-   if($connexionOK == TRUE){
-      echo "<p align=center style=color:green><strong>".$connexionMSG."</strong></p>";
+
+   if($connectionOK == TRUE){
+      echo "<p align=center style=color:green><strong>".$connectionMSG."</strong></p>";
+      header("Refresh: 3; url=/site/view/index.html");
    }
 
    ?>

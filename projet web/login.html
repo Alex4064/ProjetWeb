@@ -41,7 +41,7 @@
 							<input type="text" class="login span2 " placeholder="Login">
 							<input type="password" class="pass span2 " placeholder="Password">
 							<button id="basket" class="btn btn-inverse btn-small"><i class="icon-white icon-shopping-cart"></i> </button>
-							<a href="IndexConnect.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Connect</a>
+							<a href="login.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Connect</a>
 							<a href="register.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Subscribe</a>
 						</div>
 							</div>
@@ -50,15 +50,15 @@
 
     <div class="container">
 
-      <div class="form-signin" role="form">
+      <form action="./../controller/login.php" method="post" class="form-signin ">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
-      </div>
+       <input class="btn btn-lg btn-primary btn-block" name="connection" type="submit">Sign in</button>
+      </form>
 
     </div>
 

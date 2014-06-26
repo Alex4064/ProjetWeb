@@ -11,9 +11,8 @@
 
 </head>
 
-<body>
-     
-       <div class="container">
+ <body>
+  <div class="container">
 		<div class="header">
 			<!-- Barre de navigation -->
 				<div id="bar" class="navbar navbar-inverse ">
@@ -41,40 +40,36 @@
 									
 							<input type="text" class="login span2 " placeholder="Login">
 							<input type="password" class="pass span2 " placeholder="Password">
-							<a href="basket.html"><button id="basket" class="btn btn-inverse btn-small"><i class="icon-white icon-shopping-cart"></i> </button></a>
-							<a id="bouton" href="index.html" class="btn btn-inverse btn-small nav">Connect</a>
-							<a id="bouton" href="register.html" class="btn btn-inverse btn-small nav">Subscribe</a>
+							<button id="basket" class="btn btn-inverse btn-small"><i class="icon-white icon-shopping-cart"></i> </button>
+							<a href="login.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Connect</a>
+							<a href="register.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Subscribe</a>
 						</div>
 							</div>
 
 				</div>
-				<div class="container">
-		
-	<div class="form-signin ">
-	
-	<form action="./../controller/register.php" method="post" class="form-signin ">
-	
-        <h2 class="form-signin-heading">Register</h2> 
-		<input type="FirstName" name="firstName" class="form-control" placeholder="FirstName" required > 
-		<input type="LastName" name="lastName" class="form-control" placeholder="LastName" required >
-        <input type="email" name="email" class="form-control " placeholder="Email address" required autofocus >
-		<input type="text" name="country" class="form-control" placeholder="Country" required >
-		<input type="Adress" name="adress" class="form-control" placeholder="Adress" required >
-		<input type="Phone" name="phone" class="form-control" placeholder="Phone" required >
-		<input type="Birthday" name="birthday" class="form-control" placeholder="Birthday" required >
-        <input type="password" name="mdp" class="form-control" placeholder="Password" required >
-		<input type="password" name="repeatpassword" class="form-control" placeholder="Retype Password" required >
-		<input class="btn btn-lg btn-primary btn-block" name="register" type="submit"></button>
-	</form>
-			
-		</div>
-				
-		</div>
-</body>
-<div class="footer">
+
+    <div class="container">
+
+      <form action="./../controller/login.php" method="post" class="form-signin ">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <input class="btn btn-lg btn-danger btn-block" name="connection" type="submit"></button>
+      </form>
+
+    </div>
+
+
+   
+  </body>
+  <div class="footer">
     
 			<div id="bar" class="navbar navbar-inverse ">
 				<div class="navbar-inner ">
 				</div>
 			</div>
 		</div>
+</html>

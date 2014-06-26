@@ -1,10 +1,12 @@
 <?php
 	$inscriptionOK = FALSE;
 	$error = FALSE;
+	require("/../model/register.php");
 	
-	if(isset($_POST['inscription'])){
+		
+	if(isset($_POST['register'])){
 		$firstname = $_POST['firstName'];
-		$lastName = $_POST['lastName'];
+		$lastname = $_POST['lastName'];
 		$email = $_POST['email'];
 		$adress = $_POST['adress'];
 		$phone = $_POST['phone'];
@@ -13,12 +15,12 @@
 		$mdp = htmlspecialchars(trim($_POST['mdp']));
 		$repeatpassword = htmlspecialchars(trim($_POST['repeatpassword']));
 		
-		if($firstname == NULL OR $lastName == NULL OR $email == NULL OR $adress == NULL OR $phone == NULL OR $birthday == NULL OR $country == NULL OR $repeatpassword == NULL){
+		if($firstname == NULL OR $lastname == NULL OR $email == NULL OR $adress == NULL OR $phone == NULL OR $birthday == NULL OR $country == NULL OR $repeatpassword == NULL){
 			$error = TRUE;
 			$errorMSG = "You should fill the fields!";
 		} else {
 			
-			if($login&&$mdp&&$repeatpassword){
+			if($email&&$mdp&&$repeatpassword){
 				
 				if(strlen($mdp)>=6){
 					
@@ -43,11 +45,15 @@
 	
 	if($error == TRUE){
 		echo "<p align=center style=color:red><strong>".$errorMSG."</strong></p>";
+		header("Refresh: 3; url=./../view/register.php");
 	}
 
 	
 	if($inscriptionOK == TRUE){
 		echo "<p align=center style=color:green><strong>".$inscriptionMSG."</strong></p>";
+		header("Refresh: 3; url=./../view/index.php");
 	}
+
+	
 
 	?>
