@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <title>EXI@STORE</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
     <script src="bootstrap/js/jquery.js"></script>
@@ -13,6 +14,7 @@
     
 <body>
      
+
     <div class="container">
 		<div class="header">
 			<!-- Barre de navigation -->
@@ -29,9 +31,8 @@
 					<!-- Structure du menu -->
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<form id="search" class="navbar-search" action="#">
-								<input  type="text" class="search-query span2 " placeholder="Search">
-									
+								<form action="#" method="post" class="navbar-search">
+								<input  type="text" name="search" class="search-query span2 " placeholder="Search">
 								</form>
 								
 							</ul>
@@ -50,7 +51,7 @@
 
 				</div>
 		</div>
-        <div class="menu" >
+        <div class="menusearch" >
 			<a href="index.html" id="menu" href="#" class="btn btn-inverse btn-large menu" >INDEX</a></br>
 			<a href="products.html" id="menu" href="#" class="btn btn-inverse btn-large menu"><li class="icon-white icon-film"></li> DVD</a></br>
 			
@@ -85,14 +86,75 @@
 			</ul>
 		</div>
 		</div>
-		<div class="topsell">
-			<img src="C:\Users\Cyprien\Desktop\documentstravail\projet web\blabla.jpg" alt=""/>
-				<h4>blabla</h4>
-					<p>aifhiuahfoaihfauvzvzbuivzbiuzb</p>
-			<img src="C:\Users\Cyprien\Desktop\documentstravail\projet web\hebus2.jpg" class=""/>
-		</div>
+
+
+	<?php
+
+
+	require("./../controller/search.php"); 
+
+	$result = new search();
+
+	if(isset($_POST['search'])) {
+
+	foreach ($result->search($_POST['search']) as $key):
+
+?>
+
+
+<!-- <div class="screen">
+	<div class="col-xs-6 col-md-3">
+		<a href="#" class="thumbnail">
+	      <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+	      <div class="caption">
+	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
+	        <div class="quantity"><?php echo $key["STOCK"]; ?></div> 
+			<div class="price"> <?php echo $key["PRICE"]; ?> </div>
+
+        <p>
+
+        <a href="description.php?IDPRODUCT=<?php echo $key["ID_PRODUCT"]; ?>" class="btn btn-primary" role="button">Details</a> 
+        <a href="#" class="btn btn-default addToBasket" role="button">Add to basket</a></p>
+      </div>
+    </div>
+  </div>
+  </div> -->
+
+  <div class="col-sm-6 col-md-4 search">
+    <div class="thumbnail">
+     <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+      <div class="caption">
+	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
+	        <div class="quantity">Actually in stock: <?php echo $key["STOCK"]; ?></div> 
+			<div class="price">Price: <?php echo $key["PRICE"]; ?> € </div>
+        <p></p>
+        <a href="description.php?IDPRODUCT=<?php echo $key["ID_PRODUCT"]; ?>" class="btn btn-primary" role="button">Details</a> 
+
+        <?php if($key["STOCK"] != 0) { ?>
+
+        <a href=\"#" class="btn btn-default addToBasket" role="button">Add</a></p>
+
+        <?php
+        }
+        ?>
+       
+      </div>
+    </div>
+  </div>
+
+
+<?php
+
+
+						endforeach;
+	
+}
+
+
+	?>
 	
 	</div>
+
 			
     
 		

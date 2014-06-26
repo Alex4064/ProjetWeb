@@ -13,6 +13,7 @@
     
 <body>
      
+
     <div class="container">
 		<div class="header">
 			<!-- Barre de navigation -->
@@ -29,7 +30,7 @@
 					<!-- Structure du menu -->
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<form action="./../controller/search.php" method="post" class="navbar-search">
+								<form action="#" method="post" class="navbar-search">
 								<input  type="text" name="search" class="search-query span2 " placeholder="Search">
 								</form>
 								
@@ -41,7 +42,7 @@
 							<input type="text" class="login span2 " placeholder="Login">
 							<input type="password" class="pass span2 " placeholder="Password">
 							<a href="register.html" ><button id="basket" class="btn btn-inverse btn-small"><i class="icon-white icon-shopping-cart"></i> </button></a>
-							<a href="login.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Connect</a>
+							<a href="IndexConnect.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Connect</a>
 							<a href="register.html" id="bouton" href="#" class="btn btn-inverse btn-small nav">Subscribe</a>
 						</div>
 						
@@ -49,7 +50,7 @@
 
 				</div>
 		</div>
-        <div class="menu" >
+        <div class="menusearch" >
 			<a href="index.html" id="menu" href="#" class="btn btn-inverse btn-large menu" >INDEX</a></br>
 			<a href="products.html" id="menu" href="#" class="btn btn-inverse btn-large menu"><li class="icon-white icon-film"></li> DVD</a></br>
 			
@@ -85,40 +86,95 @@
 		</div>
 		</div>
 
-		<div class="content">
-			<div class="caroussel">
-				<div id="myCarousel" class="carousel slide">
-						<!-- Carousel items -->
-					<div class="carousel-inner">
-						<div class="active item">
-							<img src="images/blabla.jpg" alt=""/>
-								<div class="carousel-caption">
-									<h4>1er slide</h4>
-										<p>description de l'image</p>
-								</div>
-						</div>
-						<div class="item">
-							<img src="images/hebus.jpg" alt=""/>
-								<div class="carousel-caption">
-									<h4>2eme slide</h4>
-										<p>description de l'image</p>
-								</div>
-						</div>
-						<div class="item">
-							<img src="images/hebus2.jpg" alt=""/>
-								<div class="carousel-caption">
-									<h4>3eme slide</h4>
-										<p>description de l'image</p>
-								</div>
-						</div>
-					</div>
-					<!-- Carousel nav -->
-					<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-				</div>
-			</div>
+
+	<?php
+
+
+	require("./../controller/search.php"); 
+
+	$result = new search();
+
+	if(isset($_POST['search'])) {
+
+	foreach ($result->search($_POST['search']) as $key):
+
+?>
+
+
+<!-- <div class="screen">
+	<div class="col-xs-6 col-md-3">
+		<a href="#" class="thumbnail">
+	      <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+	      <div class="caption">
+	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
+	        <div class="quantity"><?php echo $key["STOCK"]; ?></div> 
+			<div class="price"> <?php echo $key["PRICE"]; ?> </div>
+
+        <p>
+
+        <a href="description.php?IDPRODUCT=<?php echo $key["ID_PRODUCT"]; ?>" class="btn btn-primary" role="button">Details</a> 
+        <a href="#" class="btn btn-default addToBasket" role="button">Add to basket</a></p>
+      </div>
+    </div>
+  </div>
+  </div> -->
+
+  <div class="col-sm-6 col-md-4 search">
+    <div class="thumbnail">
+     <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+      <div class="caption">
+	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
+	        <div class="quantity"><?php echo $key["STOCK"]; ?></div> 
+			<div class="price"> <?php echo $key["PRICE"]; ?> </div>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4 search">
+    <div class="thumbnail">
+     <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+      <div class="caption">
+	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
+	        <div class="quantity"><?php echo $key["STOCK"]; ?></div> 
+			<div class="price"> <?php echo $key["PRICE"]; ?> </div>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-4 search">
+    <div class="thumbnail">
+     <img src="<?php echo $key["PICTUREPATH"]; ?>" alt="...">
+      <div class="caption">
+	       <div class="name"> <?php echo $key["NAMEPRODUCT"]; ?> <h3></h3></div>
+	        <div class="quantity"><?php echo $key["STOCK"]; ?></div> 
+			<div class="price"> <?php echo $key["PRICE"]; ?> </div>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+
+<?php
+
+
+						endforeach;
+	
+}
+
+
+	?>
+	
+	</div>
+
+			
     
-		</div>
+		
     
     
     
@@ -135,6 +191,3 @@
 
 </body>
 </html>
-        
-        
-        
